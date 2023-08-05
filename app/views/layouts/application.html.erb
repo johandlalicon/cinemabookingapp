@@ -6,13 +6,15 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+  <body class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+    <header>
+      <%= render 'layouts/header'%>
+    </header>
+    <main class="container mx-auto">
+      <%= render 'layouts/alerts'%>
       <%= yield %>
     </main>
   </body>
