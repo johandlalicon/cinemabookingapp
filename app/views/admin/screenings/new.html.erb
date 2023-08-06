@@ -1,0 +1,9 @@
+<%= form_with(model: @screening, url: admin_screenings_path, local: true) do |form| %>
+  <%= form.label :movie_id %>
+  <%= form.collection_select :movie_id, @movies, :id, :title %>
+  <%= form.label :cinema_id %>
+  <%= form.collection_select :cinema_id, @cinemas, :id, :cinema_number %>
+  <%= form.label :timeslot_id %>
+  <%= form.collection_select :timeslot_id, @timeslots, :id, :start_time %>
+  <%= form.submit %>
+<% end %>
