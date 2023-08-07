@@ -22,6 +22,24 @@ class Admin::ScreeningsController < ApplicationController
     def show
       @screening = Screening.last
     end
+
+    def timeslots
+      @target = params[:target]
+      cinema = params[:cinema]
+      existing_screenings = Screening.where(cinema_id: cinema)
+      
+      taken_timeslots = existing_screenings.pluck(:timeslot_id)
+      
+      all_timeslots = Timeslot.all.pluck(:id)
+      
+      available_timeslots = all_timeslots.select { |timeslot| !taken_timeslots.include?(timeslot.id) }
+      @available_timeslot_start_times = available_timeslots.pluck(:start_time)
+
+      respond_to do |timeslot|
+        timeslot.turbo_stream
+      end
+      
+    end
   
     private
   
@@ -33,13 +51,6 @@ class Admin::ScreeningsController < ApplicationController
       existing_screening = Screening.find_by(cinema_id: cinema_id, timeslot_id: timeslot_id)
       if existing_screening
         taken_timeslot = existing_screening.timeslot.id
-      end
-    end
-
-    def unique_cinema_timeslot_combination
-      existing_screening = Screening.find_by(cinema_id: cinema_id, timeslot_id: timeslot_id)
-      if existing_screening && existing_screening != self
-        errors.add(:base, "Another screening with the same cinema and timeslot already exists")
       end
     end
 
