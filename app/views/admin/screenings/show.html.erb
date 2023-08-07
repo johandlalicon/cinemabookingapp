@@ -1,0 +1,12 @@
+<h1>YEY</h1>
+<div>
+  <div>
+    <p><strong>Movie:</strong> <%= @screening.movie.title %></p>
+    <span>Movie ID: <%= @screening.movie.id %></span>
+    <p><strong>Cinema:</strong> <%= @screening.cinema.cinema_number %></p>
+    <span>Cinema ID: <%= @screening.cinema.id %></span>
+    <p><strong>Timeslot:</strong> <%= @screening.timeslot.start_time %></p>
+    <span>Timeslot ID: <%= @screening.timeslot.id %></span>
+  </div>
+  <%= link_to 'Enter a new screening', new_admin_screening_path%>
+</div>
