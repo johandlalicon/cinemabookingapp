@@ -1,3 +1,3 @@
 <%= turbo_stream.update @target do %>
-  <%= options_for_select @available_timeslot_start_times %>
+  <%= options_for_select @available_timeslot || @all_timeslot %>
 <% end %>

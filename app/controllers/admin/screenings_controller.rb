@@ -1,5 +1,6 @@
 
 class Admin::ScreeningsController < ApplicationController
+
     def new
       @screening = Screening.new
       @movies = Movie.all
@@ -8,6 +9,8 @@ class Admin::ScreeningsController < ApplicationController
     end
   
     def create
+
+      
       @screening = Screening.new(screening_params)
       if @screening.save
         redirect_to admin_screening_path(@screening), notice: "Screening was successfully created."
@@ -27,31 +30,35 @@ class Admin::ScreeningsController < ApplicationController
       @target = params[:target]
       cinema = params[:cinema]
       existing_screenings = Screening.where(cinema_id: cinema)
-      
-      taken_timeslots = existing_screenings.pluck(:timeslot_id)
-      
-      all_timeslots = Timeslot.all.pluck(:id)
-      
-      available_timeslots = all_timeslots.select { |timeslot| !taken_timeslots.include?(timeslot.id) }
-      @available_timeslot_start_times = available_timeslots.pluck(:start_time)
 
-      respond_to do |timeslot|
-        timeslot.turbo_stream
+      if existing_screenings.present?
+        taken_timeslot_ids = existing_screenings.pluck(:timeslot_id)
+        all_timeslot_ids = Timeslot.pluck(:id)
+        available_timeslot_ids = all_timeslot_ids - taken_timeslot_ids
+        available_timeslots = Timeslot.where(id: available_timeslot_ids)
+        @available_timeslot = available_timeslots.pluck(:start_time)
+        
+        respond_to do |timeslot|
+          timeslot.turbo_stream
+        end
+
+      else
+        @all_timeslot = Timeslot.pluck(:start_time)
+
+        respond_to do |timeslot|
+          timeslot.turbo_stream
+        end
+
       end
-      
     end
   
     private
+
   
     def screening_params
-      params.require(:screening).permit(:movie_id, :cinema_id, :start_time, :timeslot_id)
-    end
-
-    def check_existing_timeslot()
-      existing_screening = Screening.find_by(cinema_id: cinema_id, timeslot_id: timeslot_id)
-      if existing_screening
-        taken_timeslot = existing_screening.timeslot.id
-      end
+      start_time = params[:screening].delete(:timeslot_id)
+      timeslot = Timeslot.find_by(start_time: start_time)
+      params.require(:screening).permit(:movie_id, :cinema_id).merge(timeslot_id: timeslot.id)
     end
 
   end

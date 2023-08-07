@@ -8,11 +8,12 @@
   
   # Create predefined timeslots
   timeslots_data = [
-    { start_time: "10:00 AM" },
-    { start_time: "2:00 PM" },
-    { start_time: "6:00 PM" },
-    { start_time: "10:00 PM" }
+    { start_time: "10:00AM" },
+    { start_time: "2:00PM" },
+    { start_time: "6:00PM" },
+    { start_time: "10:00PM" }
   ]
+  
   timeslots = Timeslot.create!(timeslots_data)
   
   # Create movies

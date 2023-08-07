@@ -5,7 +5,7 @@
     <%= form.label :cinema_id %>
     <%= form.collection_select :cinema_id, @cinemas, :id, :cinema_number, {prompt: "Select Cinema"}, data: { action: "change->cinema#change"} %>
     <%= form.label :timeslot %>
-    <%= form.collection_select :timeslot, [], :id, :timeslot_id, {prompt: "Select Timeslot"}, data: { cinema_target: "selectTimeslot" } %>
+    <%= form.collection_select :timeslot_id, [], :id, :timeslot_id, {prompt: "Select Timeslot"}, data: { cinema_target: "selectTimeslot" } %>
   </div>
   <%= form.submit %>
 <% end %>
