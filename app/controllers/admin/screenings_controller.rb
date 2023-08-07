@@ -1,5 +1,8 @@
 
 class Admin::ScreeningsController < ApplicationController
+    def index
+      @screenings = Screening.all
+    end
 
     def new
       @screening = Screening.new
@@ -9,9 +12,8 @@ class Admin::ScreeningsController < ApplicationController
     end
   
     def create
-
-      
       @screening = Screening.new(screening_params)
+      @screening.seating_capacity = 10
       if @screening.save
         redirect_to admin_screening_path(@screening), notice: "Screening was successfully created."
       else
@@ -51,6 +53,8 @@ class Admin::ScreeningsController < ApplicationController
 
       end
     end
+
+    
   
     private
 

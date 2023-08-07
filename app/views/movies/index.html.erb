@@ -1,0 +1,35 @@
+<h1>All Movies</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Movie Title</th>
+      <th>Screening Time</th>
+      <th>Cinema Number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @movies.each do |movie| %>
+      <tr>
+        <td><%= movie.title %></td>
+        <td>
+          <ul>
+            <% movie.screenings.each do |screening| %>
+              <li>
+                <%= link_to screening.timeslot.start_time, new_booking_path(screening_id: screening.id) %>
+              </li>
+            <% end %>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <% movie.screenings.each do |screening| %>
+              <li>
+                <%= screening.cinema.cinema_number %>
+              </li>
+            <% end %>
+          </ul>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

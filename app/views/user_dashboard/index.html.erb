@@ -1,0 +1,11 @@
+<h1>User Dashboard</h1>
+<h2>Your Bookings</h2>
+<ul>
+  <% @user_bookings.each do |booking| %>
+    <li>
+      <%= booking.screening.movie.title %> - <%= booking.screening.cinema.cinema_number %>
+      - <%= booking.screening.timeslot.start_time %>
+      - Seats: <%= booking.seats %>
+    </li>
+  <% end %>
+</ul>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_07_132514) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_07_171011) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,6 +19,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_07_132514) do
     t.bigint "screening_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "seats"
     t.index ["screening_id"], name: "index_bookings_on_screening_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
@@ -40,7 +41,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_07_132514) do
     t.bigint "movie_id", null: false
     t.bigint "cinema_id", null: false
     t.bigint "timeslot_id", null: false
-    t.integer "seating_capacity"
+    t.integer "seating_capacity", default: 10
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cinema_id"], name: "index_screenings_on_cinema_id"

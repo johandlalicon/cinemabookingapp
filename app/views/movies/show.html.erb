@@ -1,0 +1,9 @@
+<h1><%= @movie.title %></h1>
+<ul>
+  <% @screenings.each do |screening| %>
+    <li>
+      <%= screening.timeslot.formatted_start_time %> at <%= screening.cinema.name %>
+      (<%= link_to 'Book Now', new_booking_path(screening_id: screening.id) %>)
+    </li>
+  <% end %>
+</ul>

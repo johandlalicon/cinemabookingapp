@@ -10,9 +10,7 @@ class Admin::DashboardController < ApplicationController
 
     def create
     end
-
     
-
     def authenticate_admin!
         redirect_to root_path unless current_user&.isAdmin?
     end
