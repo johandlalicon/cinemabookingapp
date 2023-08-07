@@ -81,6 +81,7 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
   database: CinemaBookingApp_production
   username: CinemaBookingApp
   password: <%= ENV["CINEMABOOKINGAPP_DATABASE_PASSWORD"] %>
