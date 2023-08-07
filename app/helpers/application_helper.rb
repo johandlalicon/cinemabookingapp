@@ -13,9 +13,10 @@ module ApplicationHelper
         "flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
     end
 
-     # def display_validation_errors(model, attribute)
+    # def display_validation_errors(model, attribute)
     # if model.errors.any?
     #   errors = model.errors.full_messages_for(attribute).join(', ')
     #   content_tag(:div, errors, class: 'text-red-500')
+    # end
     # end
 end

@@ -54,11 +54,8 @@ class Admin::ScreeningsController < ApplicationController
       end
     end
 
-    
-  
     private
 
-  
     def screening_params
       start_time = params[:screening].delete(:timeslot_id)
       timeslot = Timeslot.find_by(start_time: start_time)

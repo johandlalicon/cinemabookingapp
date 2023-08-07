@@ -13,7 +13,7 @@
         <tr>
           <td><%= movie.title %></td>
           <td>
-            <ul>
+            <ul class="list-none">
               <% movie.screenings.each do |screening| %>
                 <li>
                   <% if user_signed_in? %>
@@ -26,7 +26,7 @@
             </ul>
           </td>
           <td>
-            <ul>
+            <ul class="list-none">
               <% movie.screenings.each do |screening| %>
                 <li>
                   <%= screening.cinema.cinema_number %>
