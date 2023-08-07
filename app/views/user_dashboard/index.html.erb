@@ -1,11 +1,23 @@
-<h1>User Dashboard</h1>
-<h2>Your Bookings</h2>
-<ul>
-  <% @user_bookings.each do |booking| %>
-    <li>
-      <%= booking.screening.movie.title %> - <%= booking.screening.cinema.cinema_number %>
-      - <%= booking.screening.timeslot.start_time %>
-      - Seats: <%= booking.seats %>
-    </li>
-  <% end %>
-</ul>
+<div class="prose">
+  <h1 class="text-center">User Dashboard</h1>
+  <table class="border-separate border-spacing-2 border border-slate-400">
+    <thead>
+      <tr class="text-center">
+        <th class="border border-slate-300 ">Movie</th>
+        <th class="border border-slate-300 ">Cinema</th>
+        <th class="border border-slate-300 ">Screening Time</th>
+        <th class="border border-slate-300 ">Booked Seats</th>
+      </tr>
+    </thead>
+    <tbody class="text-center">
+      <% @user_bookings.each do |booking| %>
+        <tr>
+          <td><%= booking.screening.movie.title %></td>
+          <td><%= booking.screening.cinema.cinema_number %></td>
+          <td><%= booking.screening.timeslot.start_time %></td>
+          <td><%= booking.seats %></td>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
+</div>

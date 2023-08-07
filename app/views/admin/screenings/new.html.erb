@@ -1,11 +1,19 @@
-<%= form_with(model: @screening, url: admin_screenings_path, local: true) do |form| %>
-  <%= form.label :movie_id %>
-  <%= form.collection_select :movie_id, @movies, :id, :title %>
-  <div data-controller="cinema">
-    <%= form.label :cinema_id %>
-    <%= form.collection_select :cinema_id, @cinemas, :id, :cinema_number, {prompt: "Select Cinema"}, data: { action: "change->cinema#change"} %>
-    <%= form.label :timeslot %>
-    <%= form.collection_select :timeslot_id, [], :id, :timeslot_id, {prompt: "Select Timeslot"}, data: { cinema_target: "selectTimeslot" } %>
+<div class="prose">
+  <h1 class="text-center">Create Screening</h1>
+  <%= form_with(model: @screening, url: admin_screenings_path, local: true) do |form| %>
+    <div class="flex flex-col">
+      <%= form.label :movie_id %>
+      <%= form.collection_select :movie_id, @movies, :id, :title, {prompt: "Select Movie"} %>
+      <%= display_validation_errors(@screening, :movie_id) %>
+      <div data-controller="cinema" class="flex flex-col mb-4">
+        <%= form.label :cinema_id %>
+        <%= form.collection_select :cinema_id, @cinemas, :id, :cinema_number, {prompt: "Select Cinema"}, data: { action: "change->cinema#change"} %>
+        <%= display_validation_errors(@screening, :cinema_id) %>
+        <%= form.label :timeslot %>
+        <%= form.collection_select :timeslot_id, [], :id, :timeslot_id, {prompt: "Select Timeslot"}, data: { cinema_target: "selectTimeslot" } %>
+        <%= display_validation_errors(@screening, :timeslot_id) %>
+      </div>
+      <%= form.submit 'Schedule Movie', class: form_button_class %>
+    <% end %>
   </div>
-  <%= form.submit %>
-<% end %>
+</div>

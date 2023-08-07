@@ -1,21 +1,26 @@
-<%= form_with(model: @booking, url: bookings_path, local: true) do |form| %>
-  <!-- Display movie title, timeslot, and cinema number -->
-  <p>Movie: <%= @movie_title %></p>
-  <p>Timeslot: <%= @timeslot_start_time %></p>
-  <p>Cinema Number: <%= @cinema_number %></p>
-  <!-- Number of seats field -->
-  <% if @screening.available_seats > 0 %>
-    <%= form.label :seats, 'Number of Seats:' %>
-    <%= form.number_field :seats, min: 1, max: @screening.available_seats, value: 1 %>
+<div class="prose">
+  <h1 class="text-center">Book a movie</h1>
+  <%= form_with(model: @booking, url: bookings_path, local: true) do |form| %>
+    <!-- Display movie title, timeslot, and cinema number -->
+    <div class="">
+      <p>Movie: <%= @movie_title %></p>
+      <p>Timeslot: <%= @timeslot_start_time %></p>
+      <p>Cinema Number: <%= @cinema_number %></p>
+      <!-- Number of seats field -->
+      <% if @screening.available_seats > 0 %>
+        <%= form.label :seats, 'Number of Seats:' %>
+        <%= form.select :seats, (1..@screening.available_seats).map { |n| [n, n] }, class: input_class %>
+      <% end %>
+      <!-- Display available seats -->
+      <p>Available Seats: <%= @screening.available_seats %></p>
+      <!-- Hidden fields for other attributes -->
+      <%= form.hidden_field :screening_id %>
+      <%= form.hidden_field :user_id %>
+      <!-- Submit and Back buttons -->
+      <% if @screening.available_seats > 0 %>
+        <%= form.submit 'Confirm Booking', class: form_button_class %>
+      <% end %>
+      <%= link_to 'Back', root_path %>
+    </div>
   <% end %>
-  <!-- Display available seats -->
-  <p>Available Seats: <%= @screening.available_seats %></p>
-  <!-- Hidden fields for other attributes -->
-  <%= form.hidden_field :screening_id %>
-  <%= form.hidden_field :user_id %>
-  <!-- Submit and Back buttons -->
-  <% if @screening.available_seats > 0 %>
-    <%= form.submit 'Confirm Booking' %>
-  <% end %>
-  <%= link_to 'Back', root_path %>
-<% end %>
+</div>

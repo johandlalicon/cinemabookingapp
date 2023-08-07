@@ -1,27 +1,29 @@
-<h1>All Screenings</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Movie</th>
-      <th>Timeslot</th>
-      <th>Cinema Number</th>
-      <th>Booked Users</th>
-      <th>Total Bookings</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @screenings.each do |screening| %>
-      <tr>
-        <td><%= screening.movie.title %></td>
-        <td><%= screening.timeslot.start_time %></td>
-        <td><%= screening.cinema.cinema_number %></td>
-        <td>
-          <% screening.bookings.each do |booking| %>
-            <%= booking.user.first_name %><br>
-          <% end %>
-        </td>
-        <td><%= screening.bookings.count %></td>
+<div class="prose">
+  <h1 class="text-center">All Screenings</h1>
+  <table class=" border-separate border-spacing-2 border border-slate-400">
+    <thead>
+      <tr class="text-center">
+        <th class="border border-slate-300">Movie</th>
+        <th class="border border-slate-300">Screening Time</th>
+        <th class="border border-slate-300">Cinema</th>
+        <th class="border border-slate-300">Booked Users</th>
+        <th class="border border-slate-300">Total Bookings</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody class="text-center">
+      <% @screenings.each do |screening| %>
+        <tr>
+          <td><%= screening.movie.title %></td>
+          <td><%= screening.timeslot.start_time %></td>
+          <td><%= screening.cinema.cinema_number %></td>
+          <td>
+            <% screening.bookings.each do |booking| %>
+              <%= booking.user.first_name %><br>
+            <% end %>
+          </td>
+          <td><%= screening.bookings.count %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
