@@ -16,8 +16,9 @@
           <%= f.label :remember_me %>
         </div>
       <% end %>
-      <div class="actions">
+      <div class="actions flex flex-col gap-2">
         <%= f.submit "Log in", class: form_button_class %>
+        <%= link_to "Sign Up", new_user_registration_path, class: form_button_class%>
       </div>
     </div>
   <% end %>
