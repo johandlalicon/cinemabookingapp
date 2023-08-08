@@ -1,12 +1,12 @@
-admin_user = User.create!(
-  first_name: 'Ippo',
-  last_name: 'Makunouchi',
-  email: 'demsey_roll_allday@kamogawa.com',
-  mobile_number: '123456789',
-  password: 'aaaaaa',
-  password_confirmation: 'aaaaaa',
-  isAdmin: true
-)
+# admin_user = User.create!(
+#   first_name: 'Ippo',
+#   last_name: 'Makunouchi',
+#   email: 'demsey_roll_allday@kamogawa.com',
+#   mobile_number: '123456789',
+#   password: 'aaaaaa',
+#   password_confirmation: 'aaaaaa',
+#   isAdmin: true
+# )
 
 
 cinemas_data = [
