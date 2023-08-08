@@ -5,7 +5,8 @@ class CreateScreenings < ActiveRecord::Migration[7.0]
       t.references :cinema, null: false, foreign_key: true
       t.references :timeslot, null: false, foreign_key: true
       t.integer :seating_capacity
-
+      t.references :cinema, foreign_key: true, on_delete: :cascade
+      
       t.timestamps
     end
   end
