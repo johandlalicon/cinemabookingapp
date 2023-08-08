@@ -9,13 +9,13 @@
 # )
 
 
-cinemas_data = [
-    { cinema_number: 1 },
-    { cinema_number: 2 },
-    { cinema_number: 3 },
-    { cinema_number: 4 }
-  ]
-  Cinema.create!(cinemas_data)
+# cinemas_data = [
+#     { cinema_number: 1 },
+#     { cinema_number: 2 },
+#     { cinema_number: 3 },
+#     { cinema_number: 4 }
+#   ]
+#   Cinema.create!(cinemas_data)
   
 
   timeslots_data = [
