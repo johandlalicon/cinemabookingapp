@@ -18,27 +18,27 @@
 #   Cinema.create!(cinemas_data)
   
 
-  timeslots_data = [
-    { start_time: "10:00AM" },
-    { start_time: "2:00PM" },
-    { start_time: "6:00PM" },
-    { start_time: "10:00PM" }
-  ]
+  # timeslots_data = [
+  #   { start_time: "10:00AM" },
+  #   { start_time: "2:00PM" },
+  #   { start_time: "6:00PM" },
+  #   { start_time: "10:00PM" }
+  # ]
   
-  timeslots_data.each do |data|
-    start_time_str = data[:start_time]
-    start_time = Time.strptime(start_time_str, "%I:%M%p")
-    Timeslot.create(start_time: start_time)
-  end
+  # timeslots_data.each do |data|
+  #   start_time_str = data[:start_time]
+  #   start_time = Time.strptime(start_time_str, "%I:%M%p")
+  #   Timeslot.create(start_time: start_time)
+  # end
 
-  # Create movies
-  movies_data = [
-    { title: "Oppenheimer" },
-    { title: "Barbie" },
-    { title: "Mission: Impossible - Dead Reckoning Part One" },
-    { title: "eHeads Event" }
-  ]
-  movies = Movie.create!(movies_data)
+  # # Create movies
+  # movies_data = [
+  #   { title: "Oppenheimer" },
+  #   { title: "Barbie" },
+  #   { title: "Mission: Impossible - Dead Reckoning Part One" },
+  #   { title: "eHeads Event" }
+  # ]
+  # movies = Movie.create!(movies_data)
   
   # Associate timeslots with cinemas
   puts "Seed data has been successfully created!"

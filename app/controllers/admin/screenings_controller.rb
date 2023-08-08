@@ -1,5 +1,9 @@
 
 class Admin::ScreeningsController < ApplicationController
+    before_action :authenticate_user!
+    before_action :require_admin
+
+
     def index
       @screenings = Screening.all
     end
@@ -60,6 +64,13 @@ class Admin::ScreeningsController < ApplicationController
       start_time = params[:screening].delete(:timeslot_id)
       timeslot = Timeslot.find_by(start_time: start_time)
       params.require(:screening).permit(:movie_id, :cinema_id).merge(timeslot_id: timeslot.id)
+    end
+
+    def require_admin
+      unless current_user && current_user.isAdmin?
+        flash[:alert] = "You must be an admin to access this page."
+        redirect_to root_path
+      end
     end
 
   end
