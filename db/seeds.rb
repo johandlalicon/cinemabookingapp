@@ -1,12 +1,12 @@
-admin_user = User.create!(
-  first_name: 'Ippo',
-  last_name: 'Makunouchi',
-  email: 'demsey_roll_allday@kamogawa.com',
-  mobile_number: '123456789',
-  password: 'aaaaaa',
-  password_confirmation: 'aaaaaa',
-  isAdmin: true
-)
+# admin_user = User.create!(
+#   first_name: 'Ippo',
+#   last_name: 'Makunouchi',
+#   email: 'demsey_roll_allday@kamogawa.com',
+#   mobile_number: '123456789',
+#   password: 'aaaaaa',
+#   password_confirmation: 'aaaaaa',
+#   isAdmin: true
+# )
 
 # user = User.create!(
 #   first_name: 'Ippo',
@@ -28,30 +28,30 @@ admin_user = User.create!(
 #   Cinema.create!(cinemas_data)
   
 
-  # timeslots_data = [
-  #   { start_time: "10:00AM" },
-  #   { start_time: "2:00PM" },
-  #   { start_time: "6:00PM" },
-  #   { start_time: "10:00PM" }
-  # ]
+  timeslots_data = [
+    { start_time: "10:00AM" },
+    { start_time: "2:00PM" },
+    { start_time: "6:00PM" },
+    { start_time: "10:00PM" }
+  ]
   
-  # timeslots_data.each do |data|
-  #   start_time_str = data[:start_time]
-  #   start_time = Time.strptime(start_time_str, "%I:%M%p")
-  #   Timeslot.create(start_time: start_time)
-  # end
+  timeslots_data.each do |data|
+    start_time_str = data[:start_time]
+    start_time = Time.strptime(start_time_str, "%I:%M%p")
+    Timeslot.create(start_time: start_time)
+  end
 
   # # Create movies
-  movies_data = [
-    { title: "Inception" },
-    { title: "Dunkirk" },
-    { title: "Memento" },
-    { title: "Inception" },
-    { title: "Interstellar" },
-    { title: "The Prestige" },
-    { title: "Tenet" }
-  ]
-  movies = Movie.create!(movies_data)
+  # movies_data = [
+  #   { title: "Inception" },
+  #   { title: "Dunkirk" },
+  #   { title: "Memento" },
+  #   { title: "Inception" },
+  #   { title: "Interstellar" },
+  #   { title: "The Prestige" },
+  #   { title: "Tenet" }
+  # ]
+  # movies = Movie.create!(movies_data)
   
   # Associate timeslots with cinemas
   puts "Seed data has been successfully created!"
