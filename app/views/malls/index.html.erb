@@ -1,0 +1,32 @@
+<div class="prose">
+  <h1 class="text-center">All Malls</h1>
+  <% @grouped_screenings.each do |mall, screenings| %>
+    <section class="mt-4">
+      <h2 class="text-center"><%= mall.name %></h2>
+      <table class="border-collapse border border-gray-300 w-full">
+        <thead class="bg-gray-200">
+          <tr class="text-center">
+            <th class="border border-gray-300 px-4 py-2">Movie</th>
+            <th class="border border-gray-300 px-4 py-2">Screening Time</th>
+            <th class="border border-gray-300 px-4 py-2">Cinema</th>
+          </tr>
+        </thead>
+        <tbody class="text-center">
+          <% screenings.each do |screening| %>
+            <tr>
+              <td class="border border-gray-300 px-4 py-2"><%= screening.movie.title %></td>
+              <td class="border border-gray-300 px-4 py-2">
+                <% if user_signed_in? %>
+                  <%= link_to screening.timeslot.start_time, new_booking_path(screening_id: screening.id) %>
+                <% else %>
+                  <%= link_to screening.timeslot.start_time, new_user_session_path %>
+                <% end %>
+              </td>
+              <td class="border border-gray-300 px-4 py-2"><%= screening.cinema.cinema_number %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </section>
+  <% end %>
+</div>

@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
     before_action :set_screening, only: [:new, :create]
+    before_action :authenticate_user!
 
   def new
     @booking = Booking.new(screening: @screening, user: current_user)

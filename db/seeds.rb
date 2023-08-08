@@ -1,4 +1,14 @@
-# admin_user = User.create!(
+admin_user = User.create!(
+  first_name: 'Ippo',
+  last_name: 'Makunouchi',
+  email: 'demsey_roll_allday@kamogawa.com',
+  mobile_number: '123456789',
+  password: 'aaaaaa',
+  password_confirmation: 'aaaaaa',
+  isAdmin: true
+)
+
+# user = User.create!(
 #   first_name: 'Ippo',
 #   last_name: 'Makunouchi',
 #   email: 'demsey_roll_allday@kamogawa.com',
@@ -32,13 +42,16 @@
   # end
 
   # # Create movies
-  # movies_data = [
-  #   { title: "Oppenheimer" },
-  #   { title: "Barbie" },
-  #   { title: "Mission: Impossible - Dead Reckoning Part One" },
-  #   { title: "eHeads Event" }
-  # ]
-  # movies = Movie.create!(movies_data)
+  movies_data = [
+    { title: "Inception" },
+    { title: "Dunkirk" },
+    { title: "Memento" },
+    { title: "Inception" },
+    { title: "Interstellar" },
+    { title: "The Prestige" },
+    { title: "Tenet" }
+  ]
+  movies = Movie.create!(movies_data)
   
   # Associate timeslots with cinemas
   puts "Seed data has been successfully created!"

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :movies, only: [:index, :show]
   resources :bookings, only: [:new, :create]
+  resources :malls, only: [:index, :show]
   
   root 'static_pages#home'
 
@@ -23,7 +24,9 @@ Rails.application.routes.draw do
         get :timeslots
       end
     end
+    resources :malls, only: [:index, :new, :create, :show, :destroy]
   end
 
+  match "*path", to: "application#not_found", via: :all
   
 end

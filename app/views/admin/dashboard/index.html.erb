@@ -1,6 +1,41 @@
-<div>
-  <li class="flex">
-    <%= link_to "Schedule a movie", '#' %>
-    <%= link_to "View all movies", '#' %>
-  </li>
+<div class="prose">
+  <h1 class="text-center">Admin Dashboard</h1>
+  <p>To register a screening:</p>
+  <ul>
+    <li>You need to register a mall then create the screening from there.</li>
+    <li>If the mall has been registered, click on View All Malls to create a screening.</li>
+  </ul>
+  <table class="border border-slate-400">
+    <thead>
+      <tr>
+        <th class="border border-slate-300 px-4 py-2">Metric</th>
+        <th class="border border-slate-300 px-4 py-2">Total Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="border border-slate-300 px-4 py-2">Total Registered Cinemas:</td>
+        <td class="border border-slate-300 px-4 py-2 font-semibold"><%= @cinema_count %></td>
+      </tr>
+      <tr>
+        <td class="border border-slate-300 px-4 py-2">Total Bookings:</td>
+        <td class="border border-slate-300 px-4 py-2 font-semibold"><%= @booking_count %></td>
+      </tr>
+      <tr>
+        <td class="border border-slate-300 px-4 py-2">Total Registered Malls:</td>
+        <td class="border border-slate-300 px-4 py-2 font-semibold"><%= @mall_count %></td>
+      </tr>
+      <tr>
+        <td class="border border-slate-300 px-4 py-2">Total Screening:</td>
+        <td class="border border-slate-300 px-4 py-2 font-semibold"><%= @screening_count %></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="grid grid-cols-3 gap-4 text-center">
+    <div>
+      <%= link_to "View All Screenings", admin_screenings_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
+    </div>
+    <div><%= link_to "View All Malls", admin_malls_path, class: "text-sm font-semibold leading-6 text-gray-900" %></div>
+    <div><%= link_to "Register a Mall", new_admin_mall_path, class: "text-sm font-semibold leading-6 text-gray-900" %></div>
+  </div>
 </div>

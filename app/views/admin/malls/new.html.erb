@@ -1,0 +1,14 @@
+<div class="prose">
+  <h1 class="text-center">Register Mall</h1>
+  <%= form_with(model: @mall, url: admin_malls_path, method: :post) do |form| %>
+    <div class="flex flex-col mb-4">
+      <%= form.label :name %>
+      <%= form.text_field :name, required: true %>
+      <%= form.label :location %>
+      <%= form.text_field :location, required: true %>
+      <%= form.label :number_of_cinemas %>
+      <%= form.number_field :number_of_cinemas, required: true %>
+    </div>
+    <%= form.submit "Register Mall", class: form_button_class %>
+  <% end %>
+</div>

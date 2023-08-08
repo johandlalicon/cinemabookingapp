@@ -4,5 +4,6 @@
     <p><strong>Cinema:</strong> <%= @screening.cinema.cinema_number %></p>
     <p><strong>Timeslot:</strong> <%= @screening.timeslot.start_time %></p>
   </div>
-  <%= link_to 'Enter a new screening', new_admin_screening_path%>
+  <%= link_to "Make another screening",new_admin_screening_path(mall_id: @screening.cinema.mall.id)  %>
+  <%= link_to "Back to View All Malls", admin_malls_path %>
 </div>

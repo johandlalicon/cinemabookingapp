@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_07_171011) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_08_172846) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -28,6 +28,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_07_171011) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "cinema_number", null: false
+    t.bigint "mall_id"
+    t.index ["mall_id"], name: "index_cinemas_on_mall_id"
+  end
+
+  create_table "malls", force: :cascade do |t|
+    t.string "name"
+    t.string "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "number_of_cinemas", default: 0
   end
 
   create_table "movies", force: :cascade do |t|
@@ -74,6 +84,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_07_171011) do
 
   add_foreign_key "bookings", "screenings"
   add_foreign_key "bookings", "users"
+  add_foreign_key "cinemas", "malls", on_delete: :cascade
   add_foreign_key "screenings", "cinemas"
   add_foreign_key "screenings", "movies"
   add_foreign_key "screenings", "timeslots"

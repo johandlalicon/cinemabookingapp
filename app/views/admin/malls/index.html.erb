@@ -1,0 +1,9 @@
+<div class="prose grid grid-cols-3 gap-4">
+  <% @malls.each do |mall| %>
+    <div class="flex justify-center gap-4 mb-8">
+      <div><%= link_to mall.name, admin_mall_path(mall) %></div>
+      <div><%= link_to "Create Screenings", new_admin_screening_path(mall_id: mall.id), class: form_button_class %></div>
+    </div>
+  <% end %>
+  <div class="text-center"><span class="text-sm">Mall not found?  </span><%= link_to "Register a Mall Here", new_admin_mall_path  %></div>
+</div>

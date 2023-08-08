@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
     
     def index
-        @movies = Movie.all.includes(:screenings)
+        @screenings = Screening.all
     end
 
     def show

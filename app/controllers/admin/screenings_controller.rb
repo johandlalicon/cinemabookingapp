@@ -11,8 +11,9 @@ class Admin::ScreeningsController < ApplicationController
     def new
       @screening = Screening.new
       @movies = Movie.all
-      @cinemas = Cinema.all
       @timeslots = Timeslot.all
+      @mall = Mall.find(params[:mall_id]) if params[:mall_id]
+      @cinemas = @mall ? @mall.cinemas : []
     end
   
     def create

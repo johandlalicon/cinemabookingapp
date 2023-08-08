@@ -4,6 +4,7 @@
     <thead>
       <tr class="text-center">
         <th class="border border-slate-300 ">Movie</th>
+        <th class="border border-slate-300 ">Mall</th>
         <th class="border border-slate-300 ">Cinema</th>
         <th class="border border-slate-300 ">Screening Time</th>
         <th class="border border-slate-300 ">Booked Seats</th>
@@ -13,6 +14,7 @@
       <% @user_bookings.each do |booking| %>
         <tr>
           <td><%= booking.screening.movie.title %></td>
+          <td><%= booking.screening.cinema.mall.name %></td>
           <td><%= booking.screening.cinema.cinema_number %></td>
           <td><%= booking.screening.timeslot.start_time %></td>
           <td><%= booking.seats %></td>

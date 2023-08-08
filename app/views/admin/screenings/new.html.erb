@@ -1,5 +1,5 @@
 <div class="prose">
-  <h1 class="text-center">Create Screening</h1>
+  <h1 class="text-center">Create Screening For <%= @mall.name %></h1>
   <%= form_with(model: @screening, url: admin_screenings_path, local: true) do |form| %>
     <div class="flex flex-col">
       <%= form.label :movie_id %>

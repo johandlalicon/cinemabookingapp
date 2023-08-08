@@ -5,8 +5,10 @@
       <tr class="text-center">
         <th class="border border-slate-300">Movie</th>
         <th class="border border-slate-300">Screening Time</th>
+        <th class="border border-slate-300">Mall</th>
         <th class="border border-slate-300">Cinema</th>
         <th class="border border-slate-300">Booked Users</th>
+        <th class="border border-slate-300">No. of seats</th>
         <th class="border border-slate-300">Total Bookings</th>
       </tr>
     </thead>
@@ -15,12 +17,16 @@
         <tr>
           <td><%= screening.movie.title %></td>
           <td><%= screening.timeslot.start_time %></td>
+          <td><%= screening.cinema.mall.name %></td>
           <td><%= screening.cinema.cinema_number %></td>
-          <td>
-            <% screening.bookings.each do |booking| %>
+          <% screening.bookings.each do |booking| %>
+            <td>
               <%= booking.user.first_name %><br>
-            <% end %>
-          </td>
+            </td>
+            <td>
+              <%= booking.seats %><br>
+            </td>
+          <% end %>
           <td><%= screening.bookings.count %></td>
         </tr>
       <% end %>
