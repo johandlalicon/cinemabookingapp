@@ -25,8 +25,12 @@ cinemas_data = [
     { start_time: "10:00PM" }
   ]
   
-  timeslots = Timeslot.create!(timeslots_data)
-  
+  timeslots_data.each do |data|
+    start_time_str = data[:start_time]
+    start_time = Time.strptime(start_time_str, "%I:%M%p")
+    Timeslot.create(start_time: start_time)
+  end
+
   # Create movies
   movies_data = [
     { title: "Oppenheimer" },
