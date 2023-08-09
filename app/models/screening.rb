@@ -10,8 +10,8 @@ class Screening < ApplicationRecord
   validates :timeslot_id, presence: true
 
   def generate_seatings
-    ('A'..(seating_capacity + 'A'.ord - 1).chr).each do |alphabet|
-      seat_number = "#{cinema.cinema_number}#{alphabet}"
+    (1..seating_capacity).each do |num|
+      seat_number = "#{cinema.cinema_number}#{num}"
       seat = seatings.create(seat_number: seat_number, booked: false)
       seat.save
     end
