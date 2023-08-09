@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_08_235552) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_09_161420) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -45,6 +45,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_08_235552) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "mall_id", null: false
+    t.index ["mall_id"], name: "index_movies_on_mall_id"
   end
 
   create_table "screenings", force: :cascade do |t|
@@ -85,6 +87,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_08_235552) do
   add_foreign_key "bookings", "screenings"
   add_foreign_key "bookings", "users"
   add_foreign_key "cinemas", "malls", on_delete: :cascade
+  add_foreign_key "movies", "malls"
   add_foreign_key "screenings", "cinemas", on_delete: :cascade
   add_foreign_key "screenings", "movies"
   add_foreign_key "screenings", "timeslots"

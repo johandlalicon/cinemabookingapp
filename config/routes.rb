@@ -19,14 +19,18 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'dashboard', to: 'dashboard#index'
-    resources :screenings, only: [:new, :create, :show, :index] do
+    resources :screenings, only: [:new, :create, :show, :index, :destroy] do
       collection do
         get :timeslots
       end
     end
-    resources :malls, only: [:index, :new, :create, :show, :destroy]
+    resources :malls, only: [:index, :new, :create, :show, :destroy] do
+      get 'create_movie', on: :member
+      post 'save_movie', on: :member
+      delete 'destroy_movie', on: :member
+    end
   end
 
-  match "*path", to: "application#not_found", via: :all
+  # match "*path", to: "application#not_found", via: :all
   
 end

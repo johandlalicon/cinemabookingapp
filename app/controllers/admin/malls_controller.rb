@@ -21,6 +21,7 @@ class Admin::MallsController < ApplicationController
 
   def show
     @mall = Mall.find(params[:id])
+    @movies = @mall.movies
   end
 
   def destroy
@@ -33,10 +34,43 @@ class Admin::MallsController < ApplicationController
     end
   end
 
+  def create_movie
+    @mall = Mall.find(params[:id])
+    @movie = @mall.movies.build
+  end
+
+  def save_movie
+    @mall = Mall.find(params[:id])
+    @movie = @mall.movies.build(movie_params)
+    if @movie.save
+      redirect_to admin_mall_path(@mall), notice: 'Movie was successfully added.'
+    else
+      render :create_movie
+    end
+  end
+
+  def destroy_movie
+    @mall = Mall.find(params[:id])
+    @movie = Movie.find(params[:movie_id])
+    
+    if @movie.screenings.exists?
+      redirect_to admin_mall_path(@mall), alert: "This movie cannot be deleted because it's associated with screenings."
+    elsif @movie.destroy
+      redirect_to admin_mall_path(@mall), notice: 'Movie was successfully deleted.'
+    else
+      flash[:alert] = 'Unable to delete the movie.'
+      redirect_to admin_mall_path(@mall)
+    end
+  end
+
   private
 
   def mall_params
     params.require(:mall).permit(:name, :location, :number_of_cinemas)
+  end
+
+  def movie_params
+    params.require(:movie).permit(:title, :description)
   end
 
   def require_admin

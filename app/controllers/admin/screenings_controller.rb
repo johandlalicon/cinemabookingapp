@@ -10,10 +10,10 @@ class Admin::ScreeningsController < ApplicationController
 
     def new
       @screening = Screening.new
-      @movies = Movie.all
       @timeslots = Timeslot.all
       @mall = Mall.find(params[:mall_id]) if params[:mall_id]
       @cinemas = @mall ? @mall.cinemas : []
+      @movies = @mall.movies
     end
   
     def create
@@ -31,6 +31,17 @@ class Admin::ScreeningsController < ApplicationController
 
     def show
       @screening = Screening.last
+    end
+
+    def destroy
+      @screening = Screening.find(params[:id])
+      @mall = @screening.cinema.mall # Get the mall associated with the screening
+      if @screening.destroy
+        redirect_to admin_mall_path(@mall), notice: "Screening was successfully deleted."
+      else
+        flash[:alert] = "Unable to delete the screening."
+        redirect_to admin_screening_path(@screening)
+      end
     end
 
     def timeslots

@@ -1,5 +1,6 @@
 class Mall < ApplicationRecord
     has_many :cinemas, dependent: :destroy
+    has_many :movies
     validates :name, presence: true, uniqueness: true
     validates :location, presence: true
     validates :number_of_cinemas, presence: true, numericality: { greater_than: 0 }

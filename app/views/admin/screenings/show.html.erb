@@ -1,9 +1,27 @@
 <div class="prose">
-  <div>
-    <p><strong>Movie:</strong> <%= @screening.movie.title %></p>
-    <p><strong>Cinema:</strong> <%= @screening.cinema.cinema_number %></p>
-    <p><strong>Timeslot:</strong> <%= @screening.timeslot.start_time %></p>
+  <table class="border-collapse border border-gray-300 w-full">
+    <colgroup>
+      <col style="width: 20%;">
+      <col style="width: 80%;">
+    </colgroup>
+    <tbody>
+      <tr>
+        <th class="border border-gray-300 px-4 py-2"><strong>Movie</strong></th>
+        <td class="border border-gray-300 px-4 py-2"><%= @screening.movie.title %></td>
+      </tr>
+      <tr>
+        <th class="border border-gray-300 px-4 py-2"><strong>Cinema</strong></th>
+        <td class="border border-gray-300 px-4 py-2"><%= @screening.cinema.cinema_number %></td>
+      </tr>
+      <tr>
+        <th class="border border-gray-300 px-4 py-2"><strong>Timeslot</strong></th>
+        <td class="border border-gray-300 px-4 py-2"><%= @screening.timeslot.start_time %></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="flex justify-between">
+    <%= link_to "Make new screening",new_admin_screening_path(mall_id: @screening.cinema.mall.id)  %>
+    <%= link_to "Back to View All Malls", admin_malls_path %>
+    <%= link_to "Delete Screening", admin_screening_path(@screening), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?", class: "ml-4" }, class: 'btn btn-danger' %>
   </div>
-  <%= link_to "Make another screening",new_admin_screening_path(mall_id: @screening.cinema.mall.id)  %>
-  <%= link_to "Back to View All Malls", admin_malls_path %>
 </div>
