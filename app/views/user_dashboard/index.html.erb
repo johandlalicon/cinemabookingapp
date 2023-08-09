@@ -7,7 +7,7 @@
         <th class="border border-slate-300 ">Mall</th>
         <th class="border border-slate-300 ">Cinema</th>
         <th class="border border-slate-300 ">Screening Time</th>
-        <th class="border border-slate-300 ">Booked Seats</th>
+        <th class="border border-slate-300 ">Seat No.</th>
       </tr>
     </thead>
     <tbody class="text-center">
@@ -17,7 +17,7 @@
           <td><%= booking.screening.cinema.mall.name %></td>
           <td><%= booking.screening.cinema.cinema_number %></td>
           <td><%= booking.screening.timeslot.start_time %></td>
-          <td><%= booking.seats %></td>
+          <td><%= booking.seating.seat_number %></td>
         <% end %>
       </tr>
     </tbody>

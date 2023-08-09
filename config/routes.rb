@@ -31,6 +31,6 @@ Rails.application.routes.draw do
     end
   end
 
-  # match "*path", to: "application#not_found", via: :all
+  match "*path", to: "application#not_found", via: :all
   
 end

@@ -1,23 +1,20 @@
 <div class="prose">
-  <h1 class="text-center">Book a movie</h1>
+  <h1 class="text-center">Book a Movie</h1>
   <%= form_with(model: @booking, url: bookings_path, local: true) do |form| %>
     <!-- Display movie title, timeslot, and cinema number -->
     <div class="">
       <p>Movie: <%= @movie_title %></p>
       <p>Timeslot: <%= @timeslot_start_time %></p>
       <p>Cinema Number: <%= @cinema_number %></p>
-      <!-- Number of seats field -->
-      <% if @screening.available_seats > 0 %>
-        <%= form.label :seats, 'Number of Seats:' %>
-        <%= form.select :seats, (1..@screening.available_seats).map { |n| [n, n] }, class: input_class %>
-      <% end %>
-      <!-- Display available seats -->
-      <p>Available Seats: <%= @screening.available_seats %></p>
+      <p>Seats Available: <%= @screening.available_seatings_count %></p>
+      <!-- Dropdown for selecting available seats -->
+      <%= form.label :seating_id, 'Select a Seat:' %>
+      <%= form.collection_select :seating_id, @screening.available_seatings, :id, :seat_number, { prompt: "Select a Seat" }, class: input_class %>
       <!-- Hidden fields for other attributes -->
       <%= form.hidden_field :screening_id %>
       <%= form.hidden_field :user_id %>
       <!-- Submit and Back buttons -->
-      <% if @screening.available_seats > 0 %>
+      <% if @screening.available_seatings_count > 0 %>
         <%= form.submit 'Confirm Booking', class: form_button_class %>
       <% end %>
       <%= link_to 'Back', root_path %>

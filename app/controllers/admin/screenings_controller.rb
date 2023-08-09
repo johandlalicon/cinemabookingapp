@@ -20,6 +20,7 @@ class Admin::ScreeningsController < ApplicationController
       @screening = Screening.new(screening_params)
       @screening.seating_capacity = 10
       if @screening.save
+        @screening.generate_seatings
         redirect_to admin_screening_path(@screening), notice: "Screening was successfully created."
       else
         @movies = Movie.all
@@ -30,7 +31,8 @@ class Admin::ScreeningsController < ApplicationController
     end
 
     def show
-      @screening = Screening.last
+      @screening = Screening.find(params[:id])
+      @booked_users_by_seat = @screening.bookings.group_by { |booking| booking.seating.seat_number }
     end
 
     def destroy

@@ -6,6 +6,10 @@
     </colgroup>
     <tbody>
       <tr>
+        <th class="border border-gray-300 px-4 py-2"><strong>Mall</strong></th>
+        <td class="border border-gray-300 px-4 py-2"><%= @screening.cinema.mall.name %></td>
+      </tr>
+      <tr>
         <th class="border border-gray-300 px-4 py-2"><strong>Movie</strong></th>
         <td class="border border-gray-300 px-4 py-2"><%= @screening.movie.title %></td>
       </tr>
@@ -22,6 +26,30 @@
   <div class="flex justify-between">
     <%= link_to "Make new screening",new_admin_screening_path(mall_id: @screening.cinema.mall.id)  %>
     <%= link_to "Back to View All Malls", admin_malls_path %>
-    <%= link_to "Delete Screening", admin_screening_path(@screening), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?", class: "ml-4" }, class: 'btn btn-danger' %>
+  </div>
+  <div>
+    <h2>Booked Users</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Seat Number</th>
+          <th>Booked Users</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @booked_users_by_seat.each do |seat_number, bookings| %>
+          <tr>
+            <td><%= seat_number %></td>
+            <td>
+              <ul>
+                <% bookings.each do |booking| %>
+                  <%= booking.user.first_name %>
+                <% end %>
+              </ul>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>

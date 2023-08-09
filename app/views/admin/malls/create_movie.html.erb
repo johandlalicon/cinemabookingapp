@@ -1,6 +1,6 @@
 <!-- app/views/admin/malls/create_movie.html.erb -->
 <div class="prose">
-  <h1 class="text-center">Add a Movie</h1>
+  <h1 class="text-center">Add a Movie For <%= @mall.name %></h1>
   <%= form_with(model: @movie, url: save_movie_admin_mall_path(@mall), local: true) do |form| %>
     <div class="flex flex-col mb-4">
       <%= form.label :title %>

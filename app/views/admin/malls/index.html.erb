@@ -12,6 +12,7 @@
         <tr>
           <td class="border border-gray-300 px-4 py-2"><%= link_to mall.name, admin_mall_path(mall) %></td>
           <td class="border border-gray-300 px-4 py-2">
+            <%= link_to "Add A Movie", create_movie_admin_mall_url(mall) %> |
             <%= link_to "Create Screenings", new_admin_screening_path(mall_id: mall.id) %>
           </td>
         </tr>

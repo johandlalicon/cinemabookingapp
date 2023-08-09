@@ -42,16 +42,7 @@ admin_user = User.create!(
   end
 
   # Create movies
-  # movies_data = [
-  #   { title: "Inception" },
-  #   { title: "Dunkirk" },
-  #   { title: "Memento" },
-  #   { title: "Inception" },
-  #   { title: "Interstellar" },
-  #   { title: "The Prestige" },
-  #   { title: "Tenet" }
-  # ]
-  # movies = Movie.create!(movies_data)
+
   
   # Associate timeslots with cinemas
   puts "Seed data has been successfully created!"

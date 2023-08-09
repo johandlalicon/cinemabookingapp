@@ -14,7 +14,6 @@
           <tr>
             <div class="flex">
               <td class="border border-gray-300 px-4 py-2"><%= movie.title %>
-                <span><%= link_to "delete", destroy_movie_admin_mall_path(@mall, movie_id: movie.id), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?", class: "ml-4" } %></span>
               </td>
             </tr>
           <% end %>
