@@ -11,8 +11,7 @@ class Screening < ApplicationRecord
 
   def generate_seatings
     (1..seating_capacity).each do |num|
-      seat_number = "#{cinema.cinema_number}#{num}"
-      seat = seatings.create(seat_number: seat_number, booked: false)
+      seat = seatings.create(seat_number: num, booked: false)
       seat.save
     end
   end

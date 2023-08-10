@@ -1,3 +1,10 @@
+
+Booking.destroy_all
+Seating.destroy_all
+Screening.destroy_all
+Movie.destroy_all
+Mall.destroy_all
+
 # admin_user = User.create!(
 #   first_name: 'Ippo',
 #   last_name: 'Makunouchi',
