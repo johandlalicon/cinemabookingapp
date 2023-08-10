@@ -9,10 +9,14 @@ class Screening < ApplicationRecord
   validates :cinema_id, presence: true
   validates :timeslot_id, presence: true
 
-  def generate_seatings
-    (1..10).each do |num|
-      seat = seatings.create(seat_number: num, booked: false)
-      seat.save
+
+  def generate_seatings(screening)
+    ('A'..'J').each do |alpha|
+      (1..10).each do |num|
+        break if screening.seatings.count >= 10  
+        seat_number = "#{alpha}#{num}"
+        seating = screening.seatings.create(seat_number: seat_number, booked: false)
+      end
     end
   end
 
